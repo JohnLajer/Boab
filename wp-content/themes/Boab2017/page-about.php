@@ -1,7 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Mahogany
- * Date: 4/05/2017
- * Time: 1:31 PM
- */
+get_header();
+
+if(have_posts()) :
+    while(have_posts()) : the_post(); ?>
+        <h3><?php the_title(); ?></h3>
+
+        <p><?php the_content(); ?></p>
+
+        <hr>
+        <?php
+    endwhile;
+endif;
+
+get_footer();
+?>

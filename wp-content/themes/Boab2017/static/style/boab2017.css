@@ -1,21 +1,27 @@
 html, body {
     margin: 0;
-    background-color: #89c2c2;
+    background-color: #FFF;
     position: relative;
+    font-family: Whitney, Verdana, Arial;
+    font-size: 12px;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: Merriweather;
 }
 
 div.menu-main-navigation-container {
     position: absolute;
-    top: 0px;
+    top: 10px;
     right: 0px;
+    z-index: 9;
 }
 
 div.menu-main-navigation-container ul li {
     float: right;
     list-style: none;
-    padding: 0;
+    padding: 0 15px;
     margin: 0;
-    width: 75px;
     text-align: center;
 }
 
@@ -23,8 +29,93 @@ div.menu-main-navigation-container ul li a {
     text-decoration: none;
     color: #000;
 }
+div.menu-main-navigation-container ul li a:hover {
+    text-decoration: underline;
+}
 
 a#logo img {
     width: 150px;
-    padding: 50px;
+    padding: 25px 0 25px 0;
 }
+
+div#topStripe {
+    background-color: #000;
+    height: 15px;
+}
+
+div.pageCentering {
+    position: relative;
+    width: 1200px;
+    margin-top: 0;
+    margin-bottom: 0px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+div.contentCentering {
+    position: relative;
+    margin: 0 150px;
+}
+
+div.landingTop {
+    height: 850px;
+    background-color: #89c2c2;
+}
+
+div.landingPageTeaser p {
+    color: #FFF;
+    margin: 0;
+    font-size: 18px;
+}
+
+h1.landingPageSplash {
+    position: absolute;
+    top: 50px;
+    left: 300px;
+    font-size: 72px;
+}
+
+h1.landingPageSplash div:nth-of-type(1) {
+    color: #FFF;
+}
+
+div.landingPageListContainer {
+    position: relative;
+    margin: 200px 0 0 0;
+}
+div.landingTop img#pointer {
+    height: 10px;
+    display: none;
+    position: absolute;
+}
+
+div.landingTopArea img#paperPlane {
+    position: absolute;
+    bottom: 50px;;
+    right: 10px;
+    width: 400px;
+}
+div.landingTopArea {
+    height: 850px;
+}
+
+ul.landingPageList{
+    padding: 0;
+}
+
+ul.landingPageList li{
+    list-style: none;
+    color: #000;
+    margin: 0;
+    padding-bottom: 3px;
+}
+ul.landingPageList li:nth-of-type(1){
+    color: #FFF;
+    padding-bottom: 5px;
+}
+
+ul.landingPageList li a{
+    text-decoration: none;
+    color: #000;
+}
+

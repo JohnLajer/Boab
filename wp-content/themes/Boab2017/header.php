@@ -16,6 +16,6 @@
 
     <body <?php body_class($arrClasses); ?>>
 
-        <a id="logo" href="#"><img src="<?php bloginfo('template_url'); ?>/static/images/logo.png" alt="Boab" /></a>
-
+    <div class="pageCentering">
         <?php wp_nav_menu(array('theme_location' => 'primary')); ?>
+    </div>

@@ -16,4 +16,24 @@ function boab2017_Setup()
 }
 
 add_action('after_setup_theme', 'boab2017_Setup');
+
+add_theme_support('custom-background');
+//add_theme_support('custom-header');
+add_theme_support('post-thumbnails');
+
+function boab2017_jQuery()
+{
+    if (!is_admin())
+    {
+        wp_deregister_script('jquery');
+
+        // Load a copy of jQuery from the Google API CDN
+        // The last parameter set to TRUE states that it should be loaded
+        // in the footer.
+        wp_register_script('jquery', 'https://code.jquery.com/jquery-3.2.1.js', false, '3.2.1', true);
+
+        wp_enqueue_script('jquery');
+    }
+}
+add_action('init', 'boab2017_jQuery');
 ?>
