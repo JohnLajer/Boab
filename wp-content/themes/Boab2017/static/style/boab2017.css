@@ -1,0 +1,30 @@
+html, body {
+    margin: 0;
+    background-color: #89c2c2;
+    position: relative;
+}
+
+div.menu-main-navigation-container {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+div.menu-main-navigation-container ul li {
+    float: right;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 75px;
+    text-align: center;
+}
+
+div.menu-main-navigation-container ul li a {
+    text-decoration: none;
+    color: #000;
+}
+
+a#logo img {
+    width: 150px;
+    padding: 50px;
+}
