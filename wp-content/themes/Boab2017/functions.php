@@ -14,6 +14,7 @@ function boab2017_Setup()
 
     register_nav_menu('primary', 'Primary Header Nav.');
     register_nav_menu('landing_sub', 'Landing page business challanges');
+    register_nav_menu('footer', 'Footer Menu');
 }
 
 add_action('after_setup_theme', 'boab2017_Setup');

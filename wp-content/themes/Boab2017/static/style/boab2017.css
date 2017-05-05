@@ -10,6 +10,72 @@ h1, h2, h3, h4, h5 {
     font-family: Merriweather;
 }
 
+footer {
+    background-color: #333030;
+}
+
+footer div.pageCentering {
+    height: 350px;
+}
+
+footer ul#menu-main-navigation-1 li a {
+    color: #FFF;
+}
+
+footer div.footerMenu {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+}
+
+footer div.footerMenu p {
+    float: left;
+    margin: 0 75px 0 0;
+    padding: 0;
+    color: #bebdbd;
+}
+footer div.footerMenu div.menu-footer-nav-container {
+    float: left;
+}
+
+footer div.footerMenu ul {
+    padding: 0;
+    margin: 0;
+}
+footer div.footerMenu ul li {
+    list-style: none;
+    float: left;
+    margin-right: 25px;
+}
+footer div.footerMenu ul li a {
+    text-decoration: none;
+    color: #bebdbd;
+}
+footer div.footerMenu ul li a:hover {
+    text-decoration: underline;
+}
+
+footer div.footerContact {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 409px;
+    color: #bebdbd;
+}
+footer div.footerContact h2 {
+    font-size: 64px;
+    color: #bebdbd;
+    margin: 0;
+    padding: 0 0 25px 0;
+}
+
+footer div.footerContact table {
+    width: 100%;
+}
+footer div.footerContact table td {
+    width: 33.3%;
+}
+
 div.menu-main-navigation-container {
     position: absolute;
     top: 10px;
