@@ -7,19 +7,30 @@
 get_header();
 
 ?>
+    <!-- Black stribe at top -->
     <div id="topStripe">&nbsp;</div>
 
+    <!-- Top part of the landing page -->
     <div class="landingTop">
 
-        <img id="pointer" src="<?php bloginfo('template_url'); ?>/static/images/pointer.png" class="pointer" alt="pointer" />
+        <!-- Social media links -->
+        <ul class="socialMedia">
+            <li><a href=""><img src="<?php bloginfo('template_url'); ?>/static/images/social/facebook.png" alt="Boab Facebook" /></a></li>
+            <li><a href=""><img src="<?php bloginfo('template_url'); ?>/static/images/social/twitter.png" alt="Boab Twitter" /></a></li>
+            <li><a href=""><img src="<?php bloginfo('template_url'); ?>/static/images/social/linked-in.png" alt="Boab LinkedIn" /></a></li>
+            <li><a href=""><img src="<?php bloginfo('template_url'); ?>/static/images/social/instagram.png" alt="Boab Instagram" /></a></li>
+        </ul>
 
+        <!-- Center the page -->
         <div class="pageCentering landingTopArea">
 
             <a id="logo" href="#"><img src="<?php bloginfo('template_url'); ?>/static/images/logo-white.png" alt="Boab" /></a>
 
+            <!-- Center the content -->
             <div class="contentCentering">
                 <?php
 
+                // Print data from WP
                 if(have_posts()) :
                     while(have_posts()) : the_post(); ?>
 
@@ -37,19 +48,16 @@ get_header();
                 </h1>
 
                 <div class="landingPageListContainer">
-                    <ul class="landingPageList">
-                        <li>Do you need to</li>
-                        <li><a href="#">stand out?</a></li>
-                        <li><a href="#">spread the word?</li>
-                        <li><a href="#">connect with people?</li>
-                        <li><a href="#">grow your business?</li>
-                        <li><a href="#">attract new customers?</li>
-                        <li><a href="#">be better understood?</li>
-                    </ul>
+
+                    <img id="pointer" src="<?php bloginfo('template_url'); ?>/static/images/pointer.png" class="pointer" alt="pointer" />
+                    <div>Do you need to</div>
+                    <?php wp_nav_menu(array('theme_location' => 'landing_sub')); ?>
+
                 </div>
             </div>
             <img id="paperPlane" src="<?php bloginfo('template_url'); ?>/static/images/paper-plane.png" alt="Paper plane" />
         </div>
+
     </div>
 <?php
 

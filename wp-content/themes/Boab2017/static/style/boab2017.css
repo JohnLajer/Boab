@@ -83,8 +83,15 @@ div.landingPageListContainer {
     position: relative;
     margin: 200px 0 0 0;
 }
+
+div.landingPageListContainer div {
+    color: #FFF;
+    padding-bottom: 5px;
+    margin: 0;
+}
+
 div.landingTop img#pointer {
-    height: 10px;
+    height: 9px;
     display: none;
     position: absolute;
 }
@@ -99,23 +106,40 @@ div.landingTopArea {
     height: 850px;
 }
 
-ul.landingPageList{
+ul#menu-business-challanges{
     padding: 0;
+    margin: 0;
 }
 
-ul.landingPageList li{
+ul#menu-business-challanges li{
     list-style: none;
     color: #000;
     margin: 0;
     padding-bottom: 3px;
 }
-ul.landingPageList li:nth-of-type(1){
-    color: #FFF;
-    padding-bottom: 5px;
-}
 
-ul.landingPageList li a{
+ul#menu-business-challanges li a{
     text-decoration: none;
     color: #000;
 }
 
+ul.socialMedia {
+    position: fixed;
+    bottom: 0px;
+    left: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+ul.socialMedia li {
+    list-style: none;
+    margin: 25px 0 25px 0;
+}
+
+ul.socialMedia li a {
+    padding: 10px 0 10px 0;
+}
+
+ul.socialMedia li a img {
+    width: 15px;
+}
