@@ -44,7 +44,7 @@ get_header();
 
                 <h1 class="landingPageSplash">
                     <div>Do you need to</div>
-                    <div>spread the word?</div>
+                    <div class="typer"></div>
                 </h1>
 
                 <div class="landingPageListContainer">

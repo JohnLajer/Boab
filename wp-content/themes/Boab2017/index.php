@@ -2,17 +2,14 @@
 get_header();
 
     if(have_posts()) :
-        while(have_posts()) : the_post(); ?>
-            <h3><?php the_title(); ?></h3>
-            <div class="thumbnail-img"><?php the_post_thumbnail('thumbnail'); ?></div>
-            <small>Posted on: <?php the_time('F j, Y'); ?> at <?php the_time('g:i a'); ?>, in <?php the_category(); ?></small>
+        while(have_posts()) : the_post();
 
-            <p><?php the_content(); ?></p>
+             get_template_part('content', get_post_format());
 
-            <hr>
-        <?php
         endwhile;
     endif;
+
+    get_sidebar();
 
 get_footer();
 ?>

@@ -78,7 +78,7 @@ footer div.footerContact table td {
 
 div.menu-main-navigation-container {
     position: absolute;
-    top: 10px;
+    top: 20px;
     right: 0px;
     z-index: 9;
 }
@@ -121,91 +121,4 @@ div.pageCentering {
 div.contentCentering {
     position: relative;
     margin: 0 150px;
-}
-
-div.landingTop {
-    height: 850px;
-    background-color: #89c2c2;
-}
-
-div.landingPageTeaser p {
-    color: #FFF;
-    margin: 0;
-    font-size: 18px;
-}
-
-h1.landingPageSplash {
-    position: absolute;
-    top: 50px;
-    left: 300px;
-    font-size: 72px;
-}
-
-h1.landingPageSplash div:nth-of-type(1) {
-    color: #FFF;
-}
-
-div.landingPageListContainer {
-    position: relative;
-    margin: 200px 0 0 0;
-}
-
-div.landingPageListContainer div {
-    color: #FFF;
-    padding-bottom: 5px;
-    margin: 0;
-}
-
-div.landingTop img#pointer {
-    height: 9px;
-    display: none;
-    position: absolute;
-}
-
-div.landingTopArea img#paperPlane {
-    position: absolute;
-    bottom: 50px;;
-    right: 10px;
-    width: 400px;
-}
-div.landingTopArea {
-    height: 850px;
-}
-
-ul#menu-business-challanges{
-    padding: 0;
-    margin: 0;
-}
-
-ul#menu-business-challanges li{
-    list-style: none;
-    color: #000;
-    margin: 0;
-    padding-bottom: 3px;
-}
-
-ul#menu-business-challanges li a{
-    text-decoration: none;
-    color: #000;
-}
-
-ul.socialMedia {
-    position: fixed;
-    bottom: 0px;
-    left: 20px;
-    padding: 0;
-    margin: 0;
-}
-
-ul.socialMedia li {
-    list-style: none;
-    margin: 25px 0 25px 0;
-}
-
-ul.socialMedia li a {
-    padding: 10px 0 10px 0;
-}
-
-ul.socialMedia li a img {
-    width: 15px;
 }
