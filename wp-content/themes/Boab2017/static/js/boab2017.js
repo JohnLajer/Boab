@@ -22,9 +22,13 @@ $( document ).ready(function() {
         // How far down is the very bottom pixel of this window?
         var bottomPixel = $(window).height() + $(window).scrollTop();
 
-        if(bottomPixel > 850) {
-            if($('ul.socialMedia').css('position') != 'absolute') {
-                $('ul.socialMedia').css('position', 'absolute').css('top', 650).css('bottom', '');
+        // Vary according to viewport size
+        var TopContainerBottom  = $( window ).width() > 768 ? 900 : 575,
+            fixFromTop          = $( window ).width() > 768 ? 700 : 375;
+
+        if(bottomPixel > TopContainerBottom) {
+            if($('ul.socialMedia').css('top') != fixFromTop) {
+                $('ul.socialMedia').css('position', 'absolute').css('top', fixFromTop).css('bottom', '');
             }
         } else {
             if($('ul.socialMedia').css('position') != 'fixed') {

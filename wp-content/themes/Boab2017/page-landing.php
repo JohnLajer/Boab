@@ -7,27 +7,14 @@
 get_header();
 
 ?>
-    <!-- Black stribe at top -->
-    <div id="topStripe">&nbsp;</div>
-
     <!-- Top part of the landing page -->
-    <div class="landingTop">
 
-        <!-- Social media links -->
-        <ul class="socialMedia">
-            <li><a href=""><img src="<?php bloginfo('template_url'); ?>/static/images/social/facebook.png" alt="Boab Facebook" /></a></li>
-            <li><a href=""><img src="<?php bloginfo('template_url'); ?>/static/images/social/twitter.png" alt="Boab Twitter" /></a></li>
-            <li><a href=""><img src="<?php bloginfo('template_url'); ?>/static/images/social/linked-in.png" alt="Boab LinkedIn" /></a></li>
-            <li><a href=""><img src="<?php bloginfo('template_url'); ?>/static/images/social/instagram.png" alt="Boab Instagram" /></a></li>
-        </ul>
+    <div class="topContainer">
+        <div class="hidden-xs row">
 
-        <!-- Center the page -->
-        <div class="pageCentering landingTopArea">
+            <div class="col-xs-0 col-sm-2">&nbsp;</div>
+            <div class="col-xs-12 col-sm-10">
 
-            <a id="logo" href="#"><img src="<?php bloginfo('template_url'); ?>/static/images/logo-white.png" alt="Boab" /></a>
-
-            <!-- Center the content -->
-            <div class="contentCentering">
                 <?php
 
                 // Print data from WP
@@ -42,10 +29,28 @@ get_header();
 
                 ?>
 
+            </div>
+
+        </div>
+
+        <div class="row landingPageSplashContainer">
+
+            <div class="col-xs-1 col-sm-4">&nbsp;</div>
+            <div class="col-xs-11 col-sm-8">
+
                 <h1 class="landingPageSplash">
                     <div>Do you need to</div>
                     <div class="typer"></div>
                 </h1>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-xs-0 col-sm-2">&nbsp;</div>
+            <div class="col-xs-12 col-sm-10">
 
                 <div class="landingPageListContainer">
 
@@ -54,11 +59,23 @@ get_header();
                     <?php wp_nav_menu(array('theme_location' => 'landing_sub')); ?>
 
                 </div>
+
             </div>
-            <img id="paperPlane" src="<?php bloginfo('template_url'); ?>/static/images/paper-plane.png" alt="Paper plane" />
+
+        </div>
+
+        <div class="hidden-xs paper-plane">
+            <img src="<?php bloginfo('template_url'); ?>/static/images/paper-plane.png" alt="Paper plane" />
         </div>
 
     </div>
+
+    <ul class="socialMedia">
+        <li><a href=""><img src="<?php bloginfo('template_url'); ?>/static/images/social/facebook.png" alt="Boab Facebook" /></a></li>
+        <li><a href=""><img src="<?php bloginfo('template_url'); ?>/static/images/social/twitter.png" alt="Boab Twitter" /></a></li>
+        <li><a href=""><img src="<?php bloginfo('template_url'); ?>/static/images/social/linked-in.png" alt="Boab LinkedIn" /></a></li>
+        <li><a href=""><img src="<?php bloginfo('template_url'); ?>/static/images/social/instagram.png" alt="Boab Instagram" /></a></li>
+    </ul>
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 

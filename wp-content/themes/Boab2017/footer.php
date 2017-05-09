@@ -1,38 +1,91 @@
 
-    <footer>
-        <div class="pageCentering">
-            <?php wp_nav_menu(array('theme_location' => 'primary')); ?>
-            <a id="logo" href="#"><img src="<?php bloginfo('template_url'); ?>/static/images/logo-white.png" alt="Boab" /></a>
+    </div> <!-- close container -->
 
-            <div class="footerMenu">
-                <p>Boab Design &copy;<?php echo date('Y') ?></p>
-                <?php wp_nav_menu(array('theme_location' => 'footer')); ?>
-            </div>
+    <div class="footer">
 
-            <div class="footerContact">
-                <h2>Say Hello</h2>
-                <table border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                        <td>
-                            <p>101 The Avenue</p>
-                            <p>Parap</p>
-                            <p>NT 0820</p>
-                        </td>
-                        <td>
-                            <p>PO Box 234</p>
-                            <p>Parap</p>
-                            <p>NT 0820</p>
-                        </td>
-                        <td>
-                            <p>+61 8 89411799</p>
-                            <p>hello@boabdesign</p>
-                            <p>.com.au</p>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+        <div class="container">
+
+            <footer>
+                <div class="row">
+
+                    <div class="col-xs-12">
+
+                        <nav class="navbar navbar-default">
+                            <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed hidden-xs" data-toggle="collapse" data-target="#bs-navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                    <a id="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php bloginfo('template_url'); ?>/static/images/logo-white.png" alt="Boab" /></a>
+                                </div>
+                                <div class="collapse navbar-collapse hidden-xs" id="bs-navbar-collapse-bottom">
+                                    <?php
+                                    wp_nav_menu(
+                                        array(
+                                            'theme_location'    => 'primary',
+                                            'container'         => false,
+                                            'menu_class'        => 'nav navbar-nav navbar-right'
+                                        )
+                                    );
+                                    ?>
+                                </div>
+                            </div>
+                        </nav>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-xs-12">
+                        <h2>Say Hello</h2>
+                        <div class="row">
+
+                            <div class="col-xs-12 col-sm-4">
+                                <p>
+                                    101 The Avenue <br />
+                                    Parap <br />
+                                    NT 0820
+                                </p>
+                            </div>
+                            <div class="col-xs-12 col-sm-4">
+                                <p>
+                                    PO Box 234 <br />
+                                    Parap <br />
+                                    NT 0820
+                                </p>
+                            </div>
+                            <div class="col-xs-12 col-sm-4">
+                                <p>
+                                    Contact: <br />
+                                    +61 8 89411799 <br />
+                                    hello@boabdesign.com.au
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 footer-info">
+                        <p>Boab Design &copy;<?php echo date('Y') ?></p>
+                        <?php wp_nav_menu(array('theme_location' => 'footer')); ?>
+                    </div>
+
+                </div>
+
+                <div class="footerContact">
+
+                </div>
+            </footer>
+
         </div>
-    </footer>
+
+    </div>
 
     <?php wp_footer(); ?>
 

@@ -1,6 +1,16 @@
+html, body {
+    background-image: linear-gradient(to top, #89c2c2, #89c2c2);
+    background-repeat: no-repeat;
+    background-size: 100% 900px;
+}
+
 div.landingTop {
     height: 850px;
     background-color: #89c2c2;
+}
+
+div.landingPageTeaser {
+    margin-bottom: 50px;
 }
 
 div.landingPageTeaser p {
@@ -9,11 +19,13 @@ div.landingPageTeaser p {
     font-size: 18px;
 }
 
+div.landingPageSplashContainer {
+    margin: 0px 0 50px 0;
+}
+
 h1.landingPageSplash {
-    position: absolute;
-    top: 80px;
-    left: 250px;
-    font-size: 68px;
+    font-size: 2vw;
+    margin-top: 0;
 }
 
 h1.landingPageSplash div:nth-of-type(1) {
@@ -25,7 +37,6 @@ h1.landingPageSplash div:nth-of-type(2) {
 
 div.landingPageListContainer {
     position: relative;
-    margin: 200px 0 0 0;
 }
 
 div.landingPageListContainer div {
@@ -34,20 +45,22 @@ div.landingPageListContainer div {
     margin: 0;
 }
 
-div.landingTop img#pointer {
+div.landingPageListContainer img#pointer {
     height: 9px;
     display: none;
     position: absolute;
 }
 
-div.landingTopArea img#paperPlane {
+div.topContainer {
+    position: relative;
+    height: 709px;
+}
+
+div.paper-plane img {
     position: absolute;
-    bottom: 50px;;
+    bottom: 50px;
     right: 10px;
     width: 400px;
-}
-div.landingTopArea {
-    height: 850px;
 }
 
 ul#menu-business-challanges{
@@ -109,4 +122,20 @@ ul.socialMedia li a img {
     0% { opacity:1; }
     50% { opacity:0; }
     100% { opacity:1; }
+}
+
+/**
+    MEDIA
+ */
+
+@media screen and (max-width: 768px) {
+    html, body { background-size: 100% 575px; }
+    h1 {font-size: 8.2vw !important;}
+    ul.socialMedia {left: auto; right: 20px !important;}
+}
+@media screen and (min-width: 768px) and (max-width: 1770px) {
+    h1 {font-size: 4.5vw !important;}
+}
+@media screen and (min-width: 1771px) {
+    h1 {font-size: 3vw !important;}
 }

@@ -11,56 +11,20 @@ h1, h2, h3, h4, h5 {
 }
 
 footer {
-    background-color: #333030;
-}
-
-footer div.pageCentering {
-    height: 350px;
-}
-
-footer ul#menu-main-navigation-1 li a {
-    color: #FFF;
-}
-
-footer div.footerMenu {
-    position: absolute;
-    bottom: 20px;
-    left: 0;
-}
-
-footer div.footerMenu p {
-    float: left;
-    margin: 0 75px 0 0;
-    padding: 0;
     color: #bebdbd;
 }
-footer div.footerMenu div.menu-footer-nav-container {
-    float: left;
-}
 
-footer div.footerMenu ul {
-    padding: 0;
-    margin: 0;
-}
-footer div.footerMenu ul li {
+footer ul#menu-footer-nav li {
     list-style: none;
     float: left;
     margin-right: 25px;
 }
-footer div.footerMenu ul li a {
+footer ul#menu-footer-nav li a {
     text-decoration: none;
     color: #bebdbd;
 }
-footer div.footerMenu ul li a:hover {
+footer ul#menu-footer-nav li a:hover {
     text-decoration: underline;
-}
-
-footer div.footerContact {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 409px;
-    color: #bebdbd;
 }
 footer div.footerContact h2 {
     font-size: 64px;
@@ -69,13 +33,18 @@ footer div.footerContact h2 {
     padding: 0 0 25px 0;
 }
 
-footer div.footerContact table {
-    width: 100%;
+/* Overwrite some bootstrap stuff to make it prettier */
+.navbar-default {
+    background-color: transparent;
+    border: none;
 }
-footer div.footerContact table td {
-    width: 33.3%;
+.navbar-default .navbar-nav>li>a {
+    color: #000;
 }
-
+.navbar-default .navbar-nav>li>a:hover {
+    text-decoration: underline;
+}
+/*
 div.menu-main-navigation-container {
     position: absolute;
     top: 20px;
@@ -98,7 +67,7 @@ div.menu-main-navigation-container ul li a {
 div.menu-main-navigation-container ul li a:hover {
     text-decoration: underline;
 }
-
+*/
 a#logo img {
     width: 150px;
     padding: 25px 0 25px 0;
@@ -121,4 +90,35 @@ div.pageCentering {
 div.contentCentering {
     position: relative;
     margin: 0 150px;
+}
+
+div.footer {
+    background-color: #333030;
+}
+div#bs-navbar-collapse-bottom ul li a {
+    color: #FFF;
+}
+div.footer-info {
+    margin: 50px 0 15px 0;
+}
+div.footer-info p {
+    float: left;
+    margin: 0 50px 0 0;
+    padding: 0;
+    color: #bebdbd;
+}
+div.footer-info ul {
+    padding: 0;
+    margin: 0;
+    float: left;
+}
+
+@media screen and (max-width: 768px) {
+    div#bs-navbar-collapse {
+        position: absolute;
+        background-color: rgb(255, 255, 255);
+        z-index: 10;
+        width: 100%;
+        top: 45px;
+    }
 }
