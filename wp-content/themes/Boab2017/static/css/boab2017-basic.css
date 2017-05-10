@@ -10,6 +10,13 @@ h1, h2, h3, h4, h5 {
     font-family: Merriweather;
 }
 
+div.search-form-container {
+    margin: 8px 0 0 15px;
+    padding: 0;
+    float: right;
+    max-width: 150px;
+}
+
 footer {
     color: #bebdbd;
 }
@@ -95,6 +102,7 @@ div.contentCentering {
 div.footer {
     background-color: #333030;
 }
+
 div#bs-navbar-collapse-bottom ul li a {
     color: #FFF;
 }

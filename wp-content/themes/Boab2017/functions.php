@@ -10,11 +10,16 @@ function boab2017_Enqueue()
     // CSS
     wp_enqueue_style('bootstrap', get_template_directory_uri().'/static/css/bootstrap.min.css', array(), '', 'all');
     wp_enqueue_style('defaultcss', get_template_directory_uri().'/static/css/boab2017-basic.css', array(), '1.0.0', 'all');
+    wp_enqueue_style('searchcss', get_template_directory_uri().'/static/css/search-form.css', array(), '1.0.0', 'all');
 
     // Load correct css.
     if(basename(get_page_template()) == 'page-landing.php')
     {
         wp_enqueue_style('customcss', get_template_directory_uri().'/static/css/boab2017-landing.css', array(), '1.0.0', 'all');
+    }
+    elseif(basename(get_page_template()) == 'page-about.php')
+    {
+        wp_enqueue_style('carousel', get_template_directory_uri().'/static/css/boab2017-carousel.css', array(), '1.0.0', 'all');
     }
     else
     {
@@ -62,7 +67,13 @@ add_theme_support('custom-background');
 //add_theme_support('custom-header');
 add_theme_support('post-thumbnails');
 add_theme_support('post-formats', array('aside', 'image', 'video'));
+add_theme_support('html5', array('search-form'));
 
+/*
+    ===================================
+    Sidebar function
+    ===================================
+*/
 function boab2017_WidgetSetup()
 {
     register_sidebar(array(
@@ -78,4 +89,25 @@ function boab2017_WidgetSetup()
 }
 
 add_action('widgets_init', 'boab2017_WidgetSetup');
+
+/*
+    ===================================
+    Include Walker file
+    ===================================
+*/
+
+require get_template_directory() .'/inc/walker.php';
+
+/*
+    ===================================
+    Head function
+    ===================================
+*/
+
+function boab2017_RemoveVersion()
+{
+    return '';
+}
+
+add_filter('the_generator', 'boab2017_RemoveVersion');
 ?>

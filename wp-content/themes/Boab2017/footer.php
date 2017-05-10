@@ -28,7 +28,8 @@
                                         array(
                                             'theme_location'    => 'primary',
                                             'container'         => false,
-                                            'menu_class'        => 'nav navbar-nav navbar-right'
+                                            'menu_class'        => 'nav navbar-nav navbar-right',
+                                            'walker'            => new Walker_NavPrimary()
                                         )
                                     );
                                     ?>
@@ -72,8 +73,10 @@
                     </div>
 
                     <div class="col-xs-12 footer-info">
+
                         <p>Boab Design &copy;<?php echo date('Y') ?></p>
                         <?php wp_nav_menu(array('theme_location' => 'footer')); ?>
+
                     </div>
 
                 </div>

@@ -1,0 +1,15 @@
+div.carousel {
+    background-color: #000;
+}
+div.carousel div.item {
+    height: 350px;
+    overflow: hidden;
+}
+div.carousel div.item img {
+    width: 100%;
+    height: auto;
+    margin-top: -35%;
+}
+div.carousel div.carousel-caption a {
+    color: #FFF;
+}

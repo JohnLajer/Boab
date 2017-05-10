@@ -1,8 +1,10 @@
 <!doctype html>
-<html>
+<html <?php language_attributes(); ?>>
+
     <head>
-        <meta charset="utf-8">
-        <title>We Are Boab</title>
+        <meta charset="<?php bloginfo('charset') ?>" />
+        <meta name="description" content="<?php bloginfo('description') ?>" />
+        <title><?php bloginfo('name') ?><?php wp_title('-') ?></title>
         <?php wp_head() ?>
     </head>
 
@@ -38,12 +40,16 @@
                             <a id="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php bloginfo('template_url'); ?>/static/images/logo-white.png" alt="Boab" /></a>
                         </div>
                         <div class="collapse navbar-collapse" id="bs-navbar-collapse">
+                            <div class="hidden-xs search-form-container">
+                                <?php get_search_form(); ?>
+                            </div>
                         <?php
                         wp_nav_menu(
                                 array(
                                     'theme_location'    => 'primary',
                                     'container'         => false,
-                                    'menu_class'        => 'nav navbar-nav navbar-right'
+                                    'menu_class'        => 'nav navbar-nav navbar-right',
+                                    'walker'            => new Walker_NavPrimary()
                                 )
                         );
                         ?>

@@ -1,5 +1,24 @@
 $( document ).ready(function() {
 
+    // Search function
+    //.form-expand
+    $('form.search-form').on('mouseover', function() {
+       $(this).find('input').focus();
+    });
+    $('form.search-form').on('click', function() {
+        if($(this).find('input').val() != '') {
+            $(this).submit();
+        }
+    });
+
+    $('form.search-form input').on('focus', function() {
+        $(this).parents('div.form-group').addClass('form-expand');
+    });
+    $('form.search-form input').on('blur', function() {
+        $(this).parents('div.form-group').removeClass('form-expand');
+    });
+
+    // Landing page sub menu
     var isFirstPointerHover = true;
     $('ul#menu-business-challanges li a').on('mouseover', function() {
         var position = $(this).position(),
@@ -18,6 +37,7 @@ $( document ).ready(function() {
         }
     });
 
+    // Landing page Social Media
     function positionSocialMedia() {
         // How far down is the very bottom pixel of this window?
         var bottomPixel = $(window).height() + $(window).scrollTop();
@@ -48,6 +68,7 @@ $( document ).ready(function() {
     // Run this when page is loaded
     positionSocialMedia();
 
+    // Landing typer scrips
     function pushTypo(typo, iTypoePos) {
         var typos = JSON.parse(localStorage.getItem("typos"));
 

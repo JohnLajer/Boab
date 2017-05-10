@@ -1,0 +1,29 @@
+div.blog-element {
+    display: block;
+    height: 200px;
+    overflow: hidden;
+    background-position: center;
+    repeat: no-repeat;
+    background-size: cover;
+}
+div.blog-element a {
+    color: #FFF;
+    text-shadow: 0 1px 3px rgba(0,0,0, .5);
+}
+
+div.second-row-padding:nth-child(2) {
+    padding-right: 0;
+}
+div.second-row-padding:nth-child(3) {
+    padding-left: 0;
+}
+
+div.third-row-padding {
+    padding: 0;
+}
+div.third-row-padding:nth-child(3n+1) {
+    padding-left: 15px;
+}
+div.third-row-padding:nth-child(3n+3) {
+    padding-right: 15px;
+}
