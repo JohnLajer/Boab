@@ -36,6 +36,7 @@ function boab2017_Enqueue()
 
     wp_enqueue_script('jquery');
     wp_enqueue_script('bootstrap-js', get_template_directory_uri().'/static/js/bootstrap.min.js', array(), '', true);
+    //wp_enqueue_script('bootstrap-form-helper-phone', get_template_directory_uri().'/static/js/form-helpers/bootstrap-formhelpers-phone.js', array(), '', true);
     wp_enqueue_script('customjs', get_template_directory_uri().'/static/js/boab2017.js', array(), '1.0.0', true);
     wp_enqueue_script('type', get_template_directory_uri().'/static/js/type.js', array(), '1.0.0', true);
 }
@@ -110,4 +111,115 @@ function boab2017_RemoveVersion()
 }
 
 add_filter('the_generator', 'boab2017_RemoveVersion');
+
+/*
+    ===================================
+    Custom Post Type
+    ===================================
+*/
+
+function boab2017_CustomPostType()
+{
+    $labels  = array(
+        'name'                  => 'Cases',
+        'singular_name'         => 'Case',
+        'add_new'               => 'Add Case',
+        'all_items'             => 'All Cases',
+        'add_new_item'          => 'Add Case',
+        'edit_item'             => 'Edit Case',
+        'new_item'              => 'New Case',
+        'view_item'             => 'View Case',
+        'search_item'           => 'Search Cases',
+        'not_found'             => 'No Cases Found',
+        'not_found_in_trash'    => 'No Cases Found In Trash',
+        'parent_item_colon'     => 'Parent Case'
+    );
+
+    $args   = array(
+        'labels'                => $labels,
+        'public'                => true,
+        'has_archive'           => true,
+        'publicly_queryable'    => true,
+        'query_var'             => true,
+        'rewrite'               => true,
+        'capability_type'       => 'post',
+        'hierarchical'          => false,
+        'supports'              => array(
+            'title',
+            'editor',
+            'excerpt',
+            'thumbnail',
+            'revisions'
+        ),
+        /*
+        'taxonomies'            => array(
+            'category',
+            'post_tag'
+        ),*/
+        'menu_position'         => 5,
+        'exclude_from_search'   => false
+    );
+
+    register_post_type('case', $args);
+}
+
+add_action('init', 'boab2017_CustomPostType');
+
+function boab2017_CustomTaxonomies()
+{
+    // Add new taxonomy hierarchical
+    $labels = [
+        'name'              => 'Solution To Problems',
+        'singular_name'     => 'Solution To Problem',
+        'search_items'      => 'Search "Solution To Problems"',
+        'all_items'         => 'All "Solution To Problems"',
+        'parent_item'       => 'Parent " Solution To Problem"',
+        'parent_item_colon' => 'Parent "Solution To Problem" Colon',
+        'edit_item_label'   => 'Edit "Solution To Problem"',
+        'update_item'       => 'Update "Solution To Problem"',
+        'add_new_item'      => 'Add New "Solution To Problem"',
+        'new_item_name'     => 'New "Solution To Problem" Name',
+        'menu_name'         => 'Solution To Problem'
+    ];
+
+    $args = [
+        'hierarchical'      => true,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => [
+            'slug'  => 'solution-to'
+        ]
+    ];
+
+    register_taxonomy('solution-to', ['case'], $args);
+
+    // Add new taxonomy not hierarchical
+    register_taxonomy('testing', ['test'], [
+        'label'         => 'Software',
+        'rewrite'       => ['slug'  => 'software'],
+        'hierarchical'  => false
+    ]);
+}
+
+add_action('init', 'boab2017_CustomTaxonomies');
+
+/*
+    ===================================
+    Custom term function
+    ===================================
+*/
+
+function boab2017_CustomTerm($postID, $term)
+{
+    $termsList = wp_get_post_terms($postID, $term);
+
+    $terms = '';
+    foreach($termsList as $term)
+    {
+        $terms .= '<a href="'.get_term_link($term).'">'.$term->name.'</a>, ';
+    }
+    return rtrim($terms, ', ');
+}
 ?>
