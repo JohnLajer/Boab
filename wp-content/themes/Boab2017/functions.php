@@ -118,52 +118,74 @@ add_filter('the_generator', 'boab2017_RemoveVersion');
     ===================================
 */
 
-function boab2017_CustomPostType()
+function boab2017_ProjectsCPT()
 {
-    $labels  = array(
-        'name'                  => 'Cases',
-        'singular_name'         => 'Case',
-        'add_new'               => 'Add Case',
-        'all_items'             => 'All Cases',
-        'add_new_item'          => 'Add Case',
-        'edit_item'             => 'Edit Case',
-        'new_item'              => 'New Case',
-        'view_item'             => 'View Case',
-        'search_item'           => 'Search Cases',
-        'not_found'             => 'No Cases Found',
-        'not_found_in_trash'    => 'No Cases Found In Trash',
-        'parent_item_colon'     => 'Parent Case'
+    $labels = array(
+        'name' => 'Projects',
+        'singular_name' => 'Project',
+        'add_new' => 'Add Project',
+        'all_items' => 'All Projects',
+        'add_new_item' => 'Add Project',
+        'edit_item' => 'Edit Project',
+        'new_item' => 'New Project',
+        'view_item' => 'View Project',
+        'search_item' => 'Search Projects',
+        'not_found' => 'No Projects Found',
+        'not_found_in_trash' => 'No Projects Found In Trash',
+        'parent_item_colon' => 'Parent Project'
     );
 
-    $args   = array(
-        'labels'                => $labels,
-        'public'                => true,
-        'has_archive'           => true,
-        'publicly_queryable'    => true,
-        'query_var'             => true,
-        'rewrite'               => true,
-        'capability_type'       => 'post',
-        'hierarchical'          => false,
-        'supports'              => array(
+    $args = array(
+        'labels' => $labels,
+        'public' => true,
+        'has_archive' => true,
+        'publicly_queryable' => true,
+        'query_var' => true,
+        'rewrite' => true,
+        'capability_type' => 'post',
+        'hierarchical' => false,
+        'supports' => array(
             'title',
             'editor',
-            'excerpt',
             'thumbnail',
-            'revisions'
         ),
-        /*
-        'taxonomies'            => array(
-            'category',
-            'post_tag'
-        ),*/
-        'menu_position'         => 5,
-        'exclude_from_search'   => false
+        'taxonomies' => array(),
+        'menu_position' => 5,
+        'exclude_from_search' => false
     );
 
-    register_post_type('case', $args);
+    register_post_type('boab-project', $args);
+
+    // Add new taxonomy hierarchical
+    $labels = [
+        'name'              => 'Services',
+        'singular_name'     => 'Service',
+        'search_items'      => 'Search Services',
+        'all_items'         => 'All Services',
+        'parent_item'       => 'Parent Service',
+        'parent_item_colon' => 'Parent Service Colon',
+        'edit_item_label'   => 'Edit Service',
+        'update_item'       => 'Update Service',
+        'add_new_item'      => 'Add New Service',
+        'new_item_name'     => 'New Service Name',
+        'menu_name'         => 'Services'
+    ];
+
+    $args = [
+        'hierarchical'          => true,
+        'labels'                => $labels,
+        'show_ui'               => true,
+        'show_admin_column'     => true,
+        'query_var'             => true,
+        'rewrite'               => [
+            'slug'  => 'solution-to'
+        ]
+    ];
+
+    register_taxonomy('Service', ['boab-project'], $args);
 }
 
-add_action('init', 'boab2017_CustomPostType');
+add_action('init', 'boab2017_ProjectsCPT');
 
 function boab2017_CustomTaxonomies()
 {
