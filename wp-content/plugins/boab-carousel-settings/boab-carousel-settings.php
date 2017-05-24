@@ -1,19 +1,19 @@
 <?php
 /**
- * Boab Related Posts
+ * Acme Footer Image
  *
- * Attach related posts to a post!
+ * Setup current context on front-end carousel with certain settings.
  *
- * @package   Boab_Related_Posts
+ * @package   Boab_Carousel_Settings
  * @author    John Lajer <john@thinktall.com.au>
  * @license   GPL-2.0+
  * @link      http://boabdesign.com.au
  * @copyright 2017 John Lajer
  *
  * @wordpress-plugin
- * Plugin Name: Boab Related Posts
+ * Plugin Name: Boab Carousel Settings
  * Plugin URI:  TODO
- * Description: Attach related posts to a post!
+ * Description: Setup current context on front-end carousel with certain settings.
  * Version:     0.1.0
  * Author:      John Lajer
  * Author URI:  http://boabdesign.com.au
@@ -29,7 +29,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Includes the core plugin class for executing the plugin.
  */
-require_once( plugin_dir_path( __FILE__ ) . 'admin/class-boab-related-posts.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'admin/class-boab-carousel-settings.php' );
 
 /**
  * Begins execution of the plugin.
@@ -40,11 +40,10 @@ require_once( plugin_dir_path( __FILE__ ) . 'admin/class-boab-related-posts.php'
  *
  * @since    0.1.0
  */
-function run_boab_related_posts() {
+function run_boab_carousel_settings() {
 
-    $plugin = new Boab_Related_posts();
+    $plugin = new Boab_Carousel_Settings();
     $plugin->run();
 
 }
-run_boab_related_posts();
-?>
+run_boab_carousel_settings();

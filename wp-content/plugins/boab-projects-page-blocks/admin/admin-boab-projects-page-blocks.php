@@ -226,6 +226,7 @@ class Boab_Projects_Page_Blocks {
         return '
         <div class="group">
             <h3>
+                <a href="javascript:void(0)">Delete</a>
                 <label>'.ucfirst($strType).' Headline <input type="text" name="content-block['.$this->blockNo.'][headline]" value="'.$oValues->strHeadline.'" placeholder="Headline" /></label>
             </h3>
             <div class="block-container" data-block-no="'.$this->blockNo.'">
@@ -489,27 +490,55 @@ class Boab_Projects_Page_Blocks {
      */
     public function save_post( $post_id ) {
 
-        if(!empty($_POST)) {
+        # Save Client Name
+        if ( isset( $_POST['boab_projects_contact_client'] ) ) {
+            update_post_meta( $post_id, 'boab_projects_contact_client', sanitize_text_field( $_POST['boab_projects_contact_client'] ) );
+        }
+
+        if(isset($_POST['content-block'])) {
             // So, any type of content block will have a type, let's loop through the headlines and save all of that juicy data
-            $iOrder = 0;
-            foreach ($_POST['content-block'] as $iEntryNo => $arrContentBlock) {
-                // sanitize all fields
-                $arrSanitizedBlock = [];
-                foreach ($arrContentBlock as $strKey => $strValue) {
-                    if (is_int($strValue))
-                        $arrSanitizedBlock[$strKey] = intval($strValue);
-                    else
-                        $arrSanitizedBlock[$strKey] = sanitize_text_field($strValue);
+
+            if(count($_POST['content-block']) > 0) {
+                global $wpdb;
+                // Delete all meta data we have attached to this post of the content_block type
+                $arrResults = $wpdb->get_results("
+                  SELECT
+                    pm.meta_id 
+                  FROM
+                    {$wpdb->postmeta} pm
+                  WHERE
+                    pm.meta_key LIKE '_project_content_block%'
+                    AND pm.post_id = {$post_id}
+                ");
+
+                if(count($arrResults) > 0)
+                {
+                    foreach ($arrResults as $oResult)
+                    {
+                        $wpdb->delete('wp_postmeta', array('meta_id' => $oResult->meta_id));
+                    }
                 }
 
-                $arrSanitizedBlock['order'] = $iOrder;
+                $iOrder = 0;
+                foreach ($_POST['content-block'] as $iEntryNo => $arrContentBlock) {
+                    // sanitize all fields
+                    $arrSanitizedBlock = [];
+                    foreach ($arrContentBlock as $strKey => $strValue) {
+                        if (is_int($strValue))
+                            $arrSanitizedBlock[$strKey] = intval($strValue);
+                        else
+                            $arrSanitizedBlock[$strKey] = sanitize_text_field($strValue);
+                    }
+
+                    $arrSanitizedBlock['order'] = $iOrder;
 
 
-                $strJSON = json_encode($arrSanitizedBlock);
+                    $strJSON = json_encode($arrSanitizedBlock);
 
-                update_post_meta($post_id, '_project_content_block_' . (intval($arrContentBlock['no'])), $strJSON);
+                    add_post_meta($post_id, '_project_content_block_' . (intval($arrContentBlock['no'])), $strJSON);
 
-                $iOrder++;
+                    $iOrder++;
+                }
             }
         }
     }
@@ -568,7 +597,7 @@ class Boab_Projects_Page_Blocks {
         <table border="0" cellspacing="0" cellpadding="6">
         <tr>
             <td><label for="boab_projects_contact_client">Client name: </label></td>
-            <td><input type="text" id="boab_projects_contact_client" name="boab_projects_contact_client" value="" class="full-width" placeholder="Client Name" /></td>
+            <td><input type="text" id="boab_projects_contact_client" name="boab_projects_contact_client" value="'.get_post_meta($post->ID, 'boab_projects_contact_client', true).'" class="full-width" placeholder="Client Name" /></td>
             <td>&nbsp;</td>
         </tr>
         <tr>

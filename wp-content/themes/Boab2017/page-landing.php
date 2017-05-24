@@ -77,7 +77,64 @@ get_header();
         <li><a href=""><img src="<?php bloginfo('template_url'); ?>/static/images/social/instagram.png" alt="Boab Instagram" /></a></li>
     </ul>
 
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="row">
+
+        <div class="col-xs-12">
+            <div class="landing-page-carousel-container">
+                <div class="landing-page-carousel">
+                    <?php
+                    global $wpdb;
+
+                    $arrResults = $wpdb->get_results("
+                      SELECT
+                        p.* 
+                      FROM
+                        {$wpdb->posts} p 
+                      WHERE
+                        p.post_type IN('post', 'boab-project')
+                        && p.post_status = 'publish'
+                      ORDER BY
+                        p.id DESC
+                      LIMIT 5
+                    ");
+
+                    $strPosts = '';
+                    if(count($arrResults) > 0)
+                    {
+
+                        foreach($arrResults as $oResult)
+                        {
+                            $arrTrueSizeImg = wp_get_attachment_image_src(get_post_thumbnail_id($oResult), 'full');
+                            $strPosts .= '
+                            <div style="background-image:url('.$arrTrueSizeImg[0].')">
+                                '.$arrTrueSizeImg[0].'
+                            </div>
+                            ';
+                        }
+
+                    }
+
+                    echo $strPosts;
+                    ?>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('div.landing-page-carousel').slick({
+                    centerMode: true,
+                    centerPadding: '15vw',
+                    slidesToShow: 1,
+                    dots: true,
+                    prevArrow: false,
+                    autoplay:true,
+                    autoplaySpeed:15000,
+                });
+            });
+        </script>
+
+    </div>
 
 <?php
 

@@ -79,3 +79,8 @@ div.image img.divider {
     max-height: 330px;
 
 }
+h3 a {
+    padding-top: 5px;
+    float: right;
+    color: #900 !important
+}

@@ -1,12 +1,9 @@
-html, body {
-    background-image: linear-gradient(to top, #89c2c2, #89c2c2);
-    background-repeat: no-repeat;
-    background-size: 100% 900px;
+div.adapt-row {
+    background-color: #00c4c4;
 }
 
-div.landingTop {
-    height: 850px;
-    background-color: #89c2c2;
+div.topContainer {
+    background-color: #00c4c4;
 }
 
 div.landingPageTeaser {
@@ -30,9 +27,11 @@ h1.landingPageSplash {
 
 h1.landingPageSplash div:nth-of-type(1) {
     color: #FFF;
+    font-weight: bold;
 }
 h1.landingPageSplash div:nth-of-type(2) {
     display:    inline-block !important;
+    font-weight: bold;
 }
 
 div.landingPageListContainer {
@@ -59,7 +58,6 @@ div.topContainer {
 div.paper-plane img {
     position: absolute;
     bottom: 50px;
-    right: 10px;
     width: 400px;
 }
 
@@ -78,27 +76,6 @@ ul#menu-business-challanges li{
 ul#menu-business-challanges li a{
     text-decoration: none;
     color: #000;
-}
-
-ul.socialMedia {
-    position: fixed;
-    bottom: 0px;
-    left: 20px;
-    padding: 0;
-    margin: 0;
-}
-
-ul.socialMedia li {
-    list-style: none;
-    margin: 25px 0 25px 0;
-}
-
-ul.socialMedia li a {
-    padding: 10px 0 10px 0;
-}
-
-ul.socialMedia li a img {
-    width: 15px;
 }
 
 /** Landing Page Typer script blinking cursor **/
@@ -135,7 +112,13 @@ ul.socialMedia li a img {
 }
 @media screen and (min-width: 768px) and (max-width: 1770px) {
     h1 {font-size: 4.5vw !important;}
+    div.paper-plane img {
+        right: 7vw;
+    }
 }
 @media screen and (min-width: 1771px) {
     h1 {font-size: 3vw !important;}
+    div.paper-plane img {
+        right: 14vw;
+    }
 }

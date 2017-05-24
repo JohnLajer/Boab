@@ -1,6 +1,9 @@
 
     </div> <!-- close container -->
-
+    <script type="text/javascript">
+        var nanobar = new Nanobar( {id: 'topStripe' } );
+        nanobar.go(80);
+    </script>
     <div class="footer">
 
         <div class="container">
@@ -89,8 +92,15 @@
         </div>
 
     </div>
-
+    <script type="text/javascript">
+        var nanobar = new Nanobar( {id: 'topStripe' } );
+        nanobar.go(85);
+    </script>
     <?php wp_footer(); ?>
 
+    <script type="text/javascript">
+        var nanobar = new Nanobar( {id: 'topStripe' } );
+        nanobar.go(100);
+    </script>
     </body>
 </html>

@@ -4,6 +4,25 @@ $( document ).ready(function() {
     //.form-expand
     $('form.search-form').on('mouseover', function() {
        $(this).find('input').focus();
+/*
+        background-color: #fff;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+        border-radius: 5px;
+        border: 1px solid #ccc;*/
+/*
+        $(this).find('input')
+        .animate({
+            borderTopLeftRadius: 5,
+            borderTopRightRadius: 5,
+            borderBottomLeftRadius: 5,
+            borderBottomRightRadius: 5,
+            WebkitBorderTopLeftRadius: 5,
+            WebkitBorderTopRightRadius: 5,
+            WebkitBorderBottomLeftRadius: 5,
+            WebkitBorderBottomRightRadius: 5,
+            MozBorderRadius: 5,
+            backgroundColor: '#99FFFF !important'
+        }, 900);*/
     });
     $('form.search-form').on('click', function() {
         if($(this).find('input').val() != '') {
@@ -40,19 +59,20 @@ $( document ).ready(function() {
     // Landing page Social Media
     function positionSocialMedia() {
         // How far down is the very bottom pixel of this window?
-        var bottomPixel = $(window).height() + $(window).scrollTop();
+        var bottomPixel                 = $(window).height() + $(window).scrollTop(),
+            footerTopPx                 = $(document).height() - $('div.footer').height(),
+            socialMediaContainerHeight  = $('ul.socialMedia').height();
 
-        // Vary according to viewport size
-        var TopContainerBottom  = $( window ).width() > 768 ? 900 : 575,
-            fixFromTop          = $( window ).width() > 768 ? 700 : 375;
+        // So we know that the social media container is fixed 200px from the top, and we know how tall it is, that means that we can know when it is approaching the page footer
+        var bottomOfSocialMediaToVPBottom = (200 + socialMediaContainerHeight - $(window).height()) * -1;
 
-        if(bottomPixel > TopContainerBottom) {
-            if($('ul.socialMedia').css('top') != fixFromTop) {
-                $('ul.socialMedia').css('position', 'absolute').css('top', fixFromTop).css('bottom', '');
+        if((bottomPixel - bottomOfSocialMediaToVPBottom) >= footerTopPx) {
+            if($('ul.socialMedia').css('top') != (footerTopPx - 200)) {
+                $('ul.socialMedia').css('position', 'absolute').css('top', (footerTopPx - 200));
             }
         } else {
             if($('ul.socialMedia').css('position') != 'fixed') {
-                $('ul.socialMedia').css('position', 'fixed').css('bottom', 0).css('top', '');
+                $('ul.socialMedia').css('position', 'fixed').css('top', 200);
             }
         }
     }

@@ -19,11 +19,15 @@
     <body <?php body_class($arrClasses); ?>>
 
     <!-- Black stribe at top -->
-    <div id="topStripe">&nbsp;</div>
+    <div id="topStripe" class="loading-content"></div>
+    <script type="text/javascript">
+        var nanobar = new Nanobar( {id: 'topStripe' } );
+        nanobar.go(5);
+    </script>
 
     <div class="container">
 
-        <div class="row">
+        <div class="row adapt-row">
 
             <div class="col-xs-12">
 
@@ -60,3 +64,8 @@
             </div>
 
         </div>
+
+        <script type="text/javascript">
+            var nanobar = new Nanobar( {id: 'topStripe' } );
+            nanobar.go(15);
+        </script>

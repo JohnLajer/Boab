@@ -82,4 +82,8 @@ $(document).ready(function() {
             }
         })
     } );
+
+    $.ui.accordion.prototype._keydown = function( event ) {
+        // your new code for the "_keydown" function
+    };
 });
