@@ -41,7 +41,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a id="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php bloginfo('template_url'); ?>/static/images/logo-white.png" alt="Boab" /></a>
+                            <a id="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php bloginfo('template_url'); ?>/static/images/<?=((basename(get_page_template()) == 'page-landing.php') ? 'logo-white.png' : 'logo-black.png')?>" alt="Boab" /></a>
                         </div>
                         <div class="collapse navbar-collapse" id="bs-navbar-collapse">
                             <div class="hidden-xs search-form-container">

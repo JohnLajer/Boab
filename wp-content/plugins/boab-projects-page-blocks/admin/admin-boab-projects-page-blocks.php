@@ -86,7 +86,7 @@ class Boab_Projects_Page_Blocks {
      */
     public function add_meta_box() {
 
-        $screens = array( 'boab-project' );
+        $screens = array( 'boab_project' );
 
         foreach ( $screens as $screen ) {
 
@@ -563,7 +563,7 @@ class Boab_Projects_Page_Blocks {
             {$wpdb->posts} p 
             ON
                   p.ID = pm.post_id
-              AND p.post_type = 'boab-project'
+              AND p.post_type = 'boab_project'
           WHERE
             pm.meta_key LIKE '_project_content_block%'
             AND pm.post_id = {$post->ID}

@@ -1,0 +1,35 @@
+div#carousel-options {
+    margin-top: 25px;
+}
+div#carousel-options input, div#carousel-options select {
+    width: 100%;
+}
+div#carousel-options table {
+     width: 100%;
+}
+div#carousel-options table tr#carousel-custom-sub-headline-row {
+     display: none;
+}
+div#carousel-options table tr td:nth-of-type(1){
+    width: 150px;
+}
+div#carousel-options table tr td:nth-of-type(3){
+    width: 50px;
+}
+tr.carousel-graphics-row {
+    display: none;
+}
+tr.carousel-graphics-row div.image a {
+    color: #900;
+    display: block;
+}
+tr#carousel-graphics-custom-image-row div.image img {
+    max-width: 90%;
+    height: auto;
+    max-height: 500px;
+}
+tr#carousel-graphics-custom-icon-row div.image img {
+     max-width: 90%;
+     height: auto;
+     max-height: 200px;
+ }

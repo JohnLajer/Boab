@@ -6,14 +6,13 @@
  *
  * @since 0.1.0
  */
-function renderMediaUploaderProjects($, $ref) {
+function renderMediaUploaderCarousel($, $ref) {
     'use strict';
 
     var file_frame,
         image_data,
-        json,
-        imgNo = $ref.data('no'),
-        blockNo = $ref.closest('div.block-container').data('block-no');
+        json;
+
 
     /**
      * If an instance of file_frame already exists, then we can open it
@@ -76,9 +75,9 @@ function renderMediaUploaderProjects($, $ref) {
         $ref.closest('td').find('div.image').show();
 
         // Store the image's information into the meta data fields
-        $( '#img-' + imgNo + '-blockno-' + blockNo + '-thumbnail-src' ).val( json.url );
-        $( '#img-' + imgNo + '-blockno-' + blockNo + '-thumbnail-title' ).val( json.title );
-        $( '#img-' + imgNo + '-blockno-' + blockNo + '-thumbnail-alt' ).val( json.alt );
+        $ref.closest('td').find('div.image-values input.carousel-graphics-custom-src').val( json.url );
+        $ref.closest('td').find('div.image-values input.carousel-graphics-custom-title').val( json.title );
+        $ref.closest('td').find('div.image-values input.carousel-graphics-custom-alt').val( json.alt );
 
     });
 
@@ -91,63 +90,80 @@ function renderMediaUploaderProjects($, $ref) {
     'use strict';
 
     $(function() {
-        $('div#accordion').on( 'click', 'input.set-image', function( evt ) {
+        $('div#carousel-options table tr input[type=button].add-custom-graphics').on( 'click', function( evt ) {
 
             // Stop the anchor's default behavior
             evt.preventDefault();
 
             // Display the media uploader
-            renderMediaUploaderProjects($, $(this));
+            renderMediaUploaderCarousel($, $(this));
 
         });
 
-        $('div#accordion').on( 'click', 'a.remove-img', function( evt ) {
+        $('div#carousel-options table tr a.remove-img').on( 'click', function( evt ) {
 
             // Stop the anchor's default behavior
             evt.preventDefault();
 
             // Remove the image, toggle the anchors
-            resetUploadFormProjects($, $(this));
+            resetUploadFormCarousel($, $(this));
 
         });
 
         /**
-         * Callback function for the 'click' event of the 'Remove Footer Image'
+         * Callback function for the 'click' event of the 'Remove Image'
          * anchor in its meta box.
          *
          * Resets the meta box by hiding the image and by hiding the 'Remove
-         * Footer Image' container.
          *
          * @param    object    $    A reference to the jQuery object
          * @since    0.2.0
          */
-        function resetUploadFormProjects($, $ref) {
+        function resetUploadFormCarousel($, $ref) {
             'use strict';
-
-            var imgNo   = $ref.data('no'),
-                blockNo = $ref.closest('div.block-container').data('block-no');
 
             // First, we'll hide the image
             $ref.closest( 'div' ).hide();
 
             // Then display the previous container
-            $ref.closest( 'div' ).siblings('div').show();
+            $ref.closest( 'div' ).siblings('div.set-button').show();
 
             // Finally, we reset the meta data input fields
-            $( '#img-' + imgNo + '-blockno-' + blockNo + '-thumbnail-src' ).val( '' );
-            $( '#img-' + imgNo + '-blockno-' + blockNo + '-thumbnail-title' ).val( '' );
-            $( '#img-' + imgNo + '-blockno-' + blockNo + '-thumbnail-alt' ).val( '' );
+            // Store the image's information into the meta data fields
+            $ref.closest('td').find('div.image-values input.carousel-graphics-custom-src').val( '' );
+            $ref.closest('td').find('div.image-values input.carousel-graphics-custom-title').val( '' );
+            $ref.closest('td').find('div.image-values input.carousel-graphics-custom-alt').val( '' );
 
         }
 
+
         // Go through all existing blocks and show the images that's set!
-        $('div#accordion').find('table.images td').each(function() {
-            // Does this td have a set image?
-            if($.trim($(this).find('img').attr('src')) != '') {
-                $(this).find('div.set-button').hide();
-                $(this).find('div.image').show();
+        function showOrHideImage($ref) {
+
+            if($ref.find('input.carousel-graphics-custom-src').val() != '') {
+
+                var src     = $ref.find('input.carousel-graphics-custom-src').val(),
+                    alt     = $ref.find('input.carousel-graphics-custom-alt').val(),
+                    title   = $ref.find('input.carousel-graphics-custom-title').val();
+
+                // After that, set the properties of the image and display it
+                $ref.closest('td').find('div.image img')
+                    .attr( 'src', src )
+                    .attr( 'alt', alt )
+                    .attr( 'title', title )
+                    .show()
+                    .parent();
+
+                // Next, hide the anchor responsible for allowing the user to select an image
+                $ref.closest('td').find('div.set-button').hide();
+
+                // Display the anchor for the removing the featured image
+                $ref.closest('td').find('div.image').show();
             }
-        })
+        }
+
+        showOrHideImage($('tr#carousel-graphics-custom-icon-row div.image-values'));
+        showOrHideImage($('tr#carousel-graphics-custom-image-row div.image-values'));
 
     });
 

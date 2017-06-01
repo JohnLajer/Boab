@@ -4,27 +4,80 @@ div.slick-list {
 div.slick-list div.slick-slide {
     /*height: 25vw;*/
     overflow: hidden;
-    background-size: cover;
-    background-position: center;
 }
 div.landing-page-carousel-container {
     padding-bottom: 100px;
+}
+div.slick-list div.slick-slide div {
+    position: absolute;
+    top: 35px;
+    /* right: 10px; */
+    margin-left: 35px;
+}
+div.slick-list div.slick-slide div h2 {
+    font-weight: bold;
+    /*border: #000 1px solid;*/
+    width: 30vw;
 }
 @media screen and (max-width: 768px) {
     div.slick-list div.slick-slide {
         height: 250px;
     }
+    div.slick-list div.carousel-background-icon {
+        background-size: 75px;
+        background-position: right 50px bottom 35px;
+    }
+    div.slick-list div.slick-slide div h2 {
+        width: 50vw;
+        font-size: 4vw;
+    }
+    div.slick-list div.slick-slide div h3 {
+        font-size: 14px;
+    }
 }
-@media screen and (min-width: 768px) and (max-width: 1770px) {
+@media screen and (min-width: 768px) and (max-width: 1440px) {
     div.slick-list div.slick-slide {
         height: 350px;
+    }
+    div.slick-list div.carousel-background-icon {
+        background-size: 100px;
+        background-position: right 80px bottom 50px;
+    }
+    div.slick-list div.slick-slide div h2 {
+        width: 40vw;
+        font-size: 3.5vw;
+    }
+    div.slick-list div.slick-slide div h3 {
+        font-size: 18px;
+    }
+}
+@media screen and (min-width: 1440px) and (max-width: 1771px) {
+    div.slick-list div.slick-slide {
+        height: 450px;
+    }
+    div.slick-list div.carousel-background-icon {
+        background-size: 120px;
+        background-position: right 150px bottom 75px;
+    }
+    div.slick-list div.slick-slide div h2 {
+        width: 35vw;
+        font-size: 3vw;
     }
 }
 @media screen and (min-width: 1771px) {
     div.slick-list div.slick-slide {
         height: 450px;
     }
+    div.slick-list div.carousel-background-icon {
+        background-size: 150px;
+        background-position: right 200px bottom 75px;
+    }
+    div.slick-list div.slick-slide div h2 {
+        width: 38vw;
+        font-size: 3vw;
+    }
 }
+
 /*
 div.carousel div.carousel-caption a {
     color: #FFF;

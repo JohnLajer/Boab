@@ -37,6 +37,15 @@ function boab2017_Enqueue()
         wp_enqueue_style('slick', get_template_directory_uri().'/static/libs/slick/slick/slick.css', array(), '1.0.0', 'all');
         wp_enqueue_style('slick-theme', get_template_directory_uri().'/static/libs/slick/slick/slick-theme.css', array(), '1.0.0', 'all');
     }
+    if(basename(get_page_template()) == 'page-projects-template.php' || is_singular( 'boab_project' ))
+    {
+        wp_enqueue_style('customcss', get_template_directory_uri().'/static/css/boab2017-projects.css', array(), '1.0.0', 'all');
+        wp_enqueue_script('projects', get_template_directory_uri().'/static/js/boab2017-projects.js', array(), '1.0.0', true);
+        wp_enqueue_script('lightbox', 'https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.1.1/ekko-lightbox.js', array(), '1.0.0', true);
+        wp_enqueue_style('slick', get_template_directory_uri().'/static/libs/slick/slick/slick.css', array(), '1.0.0', 'all');
+        wp_enqueue_style('slick-theme', get_template_directory_uri().'/static/libs/slick/slick/slick-theme.css', array(), '1.0.0', 'all');
+        wp_enqueue_style('lightbox', 'https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.1.1/ekko-lightbox.css', array(), '1.0.0', 'all');
+    }
     elseif(basename(get_page_template()) == 'page-about.php')
     {
         //
@@ -160,7 +169,7 @@ function boab2017_ProjectsCPT()
         'exclude_from_search' => false
     );
 
-    register_post_type('boab-project', $args);
+    register_post_type('boab_project', $args);
 
     // Add new taxonomy hierarchical
     $labels = [
@@ -188,7 +197,35 @@ function boab2017_ProjectsCPT()
         ]
     ];
 
-    register_taxonomy('Service', ['boab-project'], $args);
+    register_taxonomy('Service', ['boab_project'], $args);
+
+    // Add new taxonomy hierarchical
+    $labels = [
+        'name'              => 'Tasks',
+        'singular_name'     => 'Task',
+        'search_items'      => 'Search Tasks',
+        'all_items'         => 'All Tasks',
+        'parent_item'       => 'Parent Task',
+        'parent_item_colon' => 'Parent Task Colon',
+        'edit_item_label'   => 'Edit Task',
+        'update_item'       => 'Update Task',
+        'add_new_item'      => 'Add New Task',
+        'new_item_name'     => 'New Task Name',
+        'menu_name'         => 'Tasks'
+    ];
+
+    $args = [
+        'hierarchical'          => true,
+        'labels'                => $labels,
+        'show_ui'               => true,
+        'show_admin_column'     => true,
+        'query_var'             => true,
+        'rewrite'               => [
+            'slug'  => 'tasks'
+        ]
+    ];
+
+    register_taxonomy('Tasks', ['boab_project'], $args);
 }
 
 add_action('init', 'boab2017_ProjectsCPT');
@@ -249,5 +286,142 @@ function boab2017_CustomTerm($postID, $term)
         $terms .= '<a href="'.get_term_link($term).'">'.$term->name.'</a>, ';
     }
     return rtrim($terms, ', ');
+}
+
+/*
+    ===================================
+    AJAX
+    ===================================
+*/
+
+// Include the Ajax library on the front end
+/**
+ * Adds the WordPress Ajax Library to the frontend.
+ */
+function add_ajax_library() {
+
+    echo '
+    <script type="text/javascript">
+        var ajaxurl = "' . admin_url( 'admin-ajax.php' ) . '"
+    </script>
+    ';
+
+    return;
+
+} // end add_ajax_library
+add_action( 'wp_head', 'add_ajax_library' );
+
+function boab2017_LoadMorePosts()
+{
+
+    $args = [
+        'post_type'         => $_POST['context'],
+        'posts_per_page'    => 9,
+        'offset'            => intval($_POST['offset'])
+    ];
+
+    if(!empty($_POST['filter']) && $_POST['filter'] != 'none')
+    {
+        $args['tax_query'] = [
+            [
+                'taxonomy'  => 'Tasks',
+                'field'     => 'slug',
+                'terms'     => $_POST['filter'],
+            ]
+        ];
+    }
+
+    $loop = new WP_Query($args);
+
+    $strPosts = '';
+    switch($_POST['context']) {
+        case 'boab_project' :
+            $strPosts = json_encode(boab2017_RenderPosts($loop, intval($_POST['offset'])));
+            break;
+    }
+
+    wp_reset_postdata();
+
+    wp_send_json_success(
+        $strPosts
+    );
+
+    wp_die();
+}
+function boab2017_RenderPosts($posts, $iLoopNo = 0)
+{
+    $strPosts = '';
+    if($posts->have_posts()):
+        $iLoops = $iLoopNo == 0 ? 0 : $iLoopNo;
+        $strClass = 'col-sm-6';
+        while($posts->have_posts()) : $posts->the_post();
+
+            if(++$iLoops > 6) {
+                $strClass = 'col-sm-4';
+            }
+
+            if(has_post_thumbnail()) :
+
+                $strUrlImg = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) );
+
+            endif;
+
+            // Get the custom taxonomy
+            $arrTaxonomies = get_the_terms(get_the_ID(), 'Service');
+            $strTaxonomies = '';
+            if($arrTaxonomies)
+            {
+                foreach($arrTaxonomies as $oTaxonomy)
+                {
+                    $strTaxonomies .= $oTaxonomy->name.', ';
+                }
+            }
+
+            $strTaxonomies = !empty($strTaxonomies) ? '<p class="webstyle5">'.rtrim($strTaxonomies, ', ').'</p>' : '';
+
+            $strPosts .= '
+            <div class="blog-element">
+                <a href="'.esc_url( get_permalink() ).'" class="blog-element-desktop hidden-xs '.$strClass.'" style="background-image: url('.$strUrlImg.')" data-postno="'.$iLoops.'">
+                    <div>
+                        <div>
+                            <span>
+                                <h3>'.the_title('', '', false).'</h3>
+                                '.$strTaxonomies.'
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                <a href="'.esc_url( get_permalink() ).'" class="blog-element-device visible-xs col-xs-12" data-postno="'.$iLoops.'">
+                    <div style="background-image: url('.$strUrlImg.')">
+                        &nbsp;
+                    </div>
+                    <div>
+                        <h3><span class="glyphicon glyphicon-arrow-up"></span>'.the_title('', '', false).'</h3>
+                        '.$strTaxonomies.'
+                    </div>
+                </a>
+            </div>
+            ';
+
+        endwhile;
+    endif;
+
+    return $strPosts;
+}
+
+add_action( 'wp_ajax_add_more_posts', 'boab2017_LoadMorePosts' );
+
+/*
+    ===================================
+    Projects
+    ===================================
+*/
+function boab2017_ImageInfoArray($src, $title, $alt)
+{
+    return [
+        'src'   => $src,
+        'title' => $title,
+        'alt'   => $alt
+    ];
 }
 ?>

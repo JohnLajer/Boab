@@ -77,7 +77,7 @@ class Boab_Related_posts {
      */
     public function add_meta_box() {
 
-        $screens = array( 'post', 'boab-project' );
+        $screens = array( 'post', 'boab_project' );
 
         foreach ( $screens as $screen ) {
 

@@ -4,11 +4,113 @@ html, body {
     position: relative;
     font-family: Whitney, Verdana, Arial;
     font-size: 12px;
+    overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h4, h5, h6, h7 {
     font-family: Merriweather;
 }
+h1, h2, h3 {
+    font-weight:bold;
+}
+h4 {
+    font-weight:lighter;
+}
+h5 {
+    font-weight:normal;
+}
+h6 {
+    font-size:13px;
+    font-weight:bold;
+}
+h7 {
+    font-weight: normal;
+}
+
+p {
+    margin: 0;
+}
+p.webstyle1 {
+    font-weight: 200;
+}
+p.webstyle3 {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 72px;
+    }
+    h2 {
+        font-size: 38px;
+    }
+    h3 {
+        font-size: 26px;
+    }
+    h4 {
+        font-size: 18px;
+    }
+    h5 {
+        font-size: 16px;
+    }
+    h7 {
+        font-size: 12px;
+    }
+
+    p.webstyle1 {
+        font-size: 28px;
+    }
+    p.webstyle2 {
+        font-size: 24px;
+    }
+    p.webstyle3 {
+        font-size: 14px;
+    }
+    p.webstyle4 {
+        font-size: 18px;
+    }
+    p.webstyle5 {
+        font-size: 13px;
+    }
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 80px;
+    }
+    h2 {
+        font-size: 50px;
+    }
+    h3 {
+        font-size: 34px;
+    }
+    h4 {
+        font-size: 26px;
+    }
+    h5 {
+        font-size: 26px;
+    }
+    h7 {
+        font-size: 18px;
+    }
+
+    p.webstyle1 {
+        font-size: 33px;
+    }
+    p.webstyle2 {
+        font-size: 29px;
+    }
+    p.webstyle3 {
+        font-size: 14px;
+    }
+    p.webstyle4 {
+        font-size: 22px;
+    }
+    p.webstyle5 {
+        font-size: 13px;
+    }
+}
+
 
 div.search-form-container {
     margin: 8px 0 0 15px;
@@ -154,17 +256,21 @@ ul.socialMedia li a img {
         width: 100%;
         top: 45px;
     }
+    .container {
+        width: 100% !important;
+        padding: 0 !important;;
+        margin: 0 !important;;
+    }
+    ul.socialMedia {left: auto; right: 20px !important;}
+    a#logo img {
+        width: 100px;
+        padding: 25px 0 25px 0;
+    }
 }
 
 @media (min-width: 768px) {
     .container {
         width: 90% !important;
     }
-}
-@media (max-width: 768px) {
-    .container {
-        width: 100% !important;
-        padding: 0 !important;;
-        margin: 0 !important;;
-    }
+
 }

@@ -1,4 +1,11 @@
 
+        <ul class="socialMedia hidden-xs">
+            <li><a href=""><img src="<?php bloginfo('template_url'); ?>/static/images/social/facebook.png" alt="Boab Facebook" /></a></li>
+            <li><a href=""><img src="<?php bloginfo('template_url'); ?>/static/images/social/twitter.png" alt="Boab Twitter" /></a></li>
+            <li><a href=""><img src="<?php bloginfo('template_url'); ?>/static/images/social/linked-in.png" alt="Boab LinkedIn" /></a></li>
+            <li><a href=""><img src="<?php bloginfo('template_url'); ?>/static/images/social/instagram.png" alt="Boab Instagram" /></a></li>
+        </ul>
+
     </div> <!-- close container -->
     <script type="text/javascript">
         var nanobar = new Nanobar( {id: 'topStripe' } );

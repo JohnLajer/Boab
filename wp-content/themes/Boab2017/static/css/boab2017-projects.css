@@ -1,0 +1,405 @@
+div.content {
+    display: table;
+    height: 150px;
+}
+h4.projects-content {
+    vertical-align: middle;
+    display: table-cell;
+}
+h4.projects-content p {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+img.clip {
+    width: 150px;
+}
+div#projects-container {
+    margin: 20px 0 20px 0;
+}
+div#projects-container > div.blog-element {
+    display: none;
+}
+div#projects-container > div >  a.blog-element-desktop {
+    height:300px;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    transition: background-color 0.5s ease;
+    cursor: pointer;
+}
+div#projects-container > div > a.blog-element-device {
+    display: block;
+    color: #000;
+}
+div#projects-container > div >  a.blog-element-device:hover {
+    text-decoration: none;
+}
+div#projects-container > div > a.blog-element-device h3, div#projects-container > div > a.blog-element-device p{
+    position: relative;
+    margin: 0;
+    padding: 10px 0 0 0;
+}
+div#projects-container > div > a.blog-element-device > div:nth-child(1) {
+    height:300px;
+    background-size: cover;
+    background-position: center center;
+}
+div#projects-container > div > a.blog-element-device > div:nth-child(2) {
+    background-color: #f5f0e9;
+    padding-left: 10vw;
+    padding-bottom: 10px;
+}
+div#projects-container > div > a.blog-element-device > div:nth-child(2) span {
+    display: block;
+    position: absolute;
+    top: 13px;
+    left: -27px;
+    font-size: 20px;
+}
+div#projects-container > div > a.blog-element-desktop > div{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    background-color: transparent;
+    transition: background-color 0.5s ease;
+}
+div#projects-container > div > a.blog-element-desktop:hover {
+    text-decoration: none;
+}
+div#projects-container > div > a.blog-element-desktop:hover > div {
+    background-color:#f5f0e9;
+}
+div#projects-container > div > a.blog-element-desktop:hover > div > div > span > p, div#projects-container > div > a.blog-element-desktop:hover > div > div > span > h3 {
+    color: #000 !important;
+}
+
+div#projects-container > div > a.blog-element-desktop > div > div {
+    display: table;
+    height: 300px;
+    width: 100%;
+}
+div#projects-container > div > a.blog-element-desktop > div > div > span{
+    display: table-cell;
+    vertical-align: middle;
+    width:  100%;
+}
+div#projects-container > div > a.blog-element-desktop > div > div > span > p, div#projects-container > div > a.blog-element-desktop > div > div > span > h3 {
+    display: block;
+    text-align: center;
+    color: transparent !important;
+    transition: color 0.5s ease;
+}
+div.load-more {
+    text-align: center;
+    margin-bottom: 100px;
+}
+div.load-more a {
+    font-weight: bold;
+    color:#000;
+}
+div.load-more a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+ul.type-filter {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+ul.type-filter li {
+    float: left;
+    margin-right: 50px;
+}
+ul.type-filter li a {
+    color: #000;
+    font-weight: bold;
+}
+ul.type-filter li a.selected {
+    border-top: 1px solid #00c4c4; /* Or whatever color you want */
+    text-decoration: none;
+    padding-top: 5px;
+}
+ul.type-filter li a:hover {
+    text-decoration: none;
+}
+
+
+
+
+/**
+    Single Page
+ */
+
+div#clip img.clip {
+    float: right;
+    width: 100px;
+    margin-right: 4vw;
+}
+@media screen and (max-width: 1024px) {
+    div#clip img.clip {
+        margin-right: 0;
+    }
+}
+
+div.headline h1 {
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 30px;
+}
+@media screen and (max-width: 768px) {
+    div.headline h1 {
+        text-align: center;
+    }
+}
+div.featured-image {
+    overflow: hidden;
+    height: 300px;
+}
+div.featured-image img {
+    width: 100%;
+    height: auto;
+}
+p.services {
+    margin-top: 40px;
+    padding-bottom: 6px;
+}
+ul.services {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+ul.services li {
+    margin: 0;
+    padding-bottom: 6px
+}
+@media screen and (max-width: 768px) {
+    p.services {
+        margin-top: 0px;
+        padding-bottom: 6px;
+    }
+    div.project-overview-info > div {
+        padding: 50px 10px 10px 50px;
+    }
+}
+div.content {
+    margin: 100px 0 100px 0;
+    width: 100%;
+}
+div.content > div {
+    display: table-cell;
+}
+div.content > div:nth-child(1) {
+    text-align: center;
+    min-height: 200px;
+}
+div.content > div:nth-child(2) > div {
+    vertical-align: middle;
+}
+div.content img {
+    max-width: 100%;
+    max-height: 200px;
+}
+@media screen and (max-width: 768px) {
+    div.content {
+        margin: 50px 0 50px 0;
+        width: 100%;
+    }
+    div.project-content div:nth-child(1) {
+        padding-bottom: 50px;
+    }
+}
+
+div.gallery {
+    background-color: #f5f0e9;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+div.gallery p.gallery-text {
+    padding: 20px 0 20px 0;
+}
+
+/* Slider */
+div.gallery-slider img {
+    max-width: 100%;
+    height: 275px;
+    padding: 0 0.5vw 0 0.5vw;
+}
+
+div.content-block {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+div.image-content div.image-1-container {
+    overflow: hidden;
+    height: 500px;
+}
+div.image-content img {
+    width: 100%;
+    min-height: 100%;
+    height: auto;
+}
+@media screen and (max-width: 768px) {
+    div.gallery > div:nth-child(1) {
+        padding-bottom: 50px;
+    }
+    div.image-content div.image-1-container {
+        overflow: hidden;
+        height: auto;
+    }
+    div.image-content img {
+        width: 100%;
+        height: auto;
+    }
+}
+div.four-image-content-container {
+    display: table;
+    width: 100%;
+    height: 800px;
+}
+div.four-image-content-container div.content-cell {
+    display: table-cell;
+    padding-right: 0;
+}
+div.four-image-content-container div.content-cell > div {
+    height: 375px;
+    vertical-align: middle;
+    display: table-cell;
+}
+div.four-image-content-container div.content-cell > div:nth-child(1) {
+    padding-right: 50px;
+}
+div.four-image-content-container div.content-cell div.bottom-text-image {
+    height: 425px;
+    display: block;
+    overflow: hidden;
+}
+div.four-image-content-container div.images-cell {
+    display: table-cell;
+    padding: 0 15px 0 0;
+}
+div.four-image-content-container div.images-cell div.top-image {
+    height: 450px;
+    margin-bottom: 75px;
+    overflow: hidden;
+}
+div.four-image-content-container div.images-cell div.bottom-image {
+    height: 275px;
+    overflow: hidden;
+}
+div.four-image-content-container div.images-cell img {
+    height: 100%;
+    width: auto;
+    min-width: 100%;
+}
+
+div.three-image-content-container div.top-images-container {
+    height: 500px;
+    overflow:hidden;
+}
+div.three-image-content-container div.top-images-container div.col-xs-8 {
+    margin-right: 0;
+    padding-right: 0;
+}
+div.three-image-content-container div.top-images-container div.col-xs-4 {
+    margin-left: 0;
+    padding-left: 0;
+}
+div.three-image-content-container div.top-images-container div.col-xs-8 div.adaptable-image {
+    height: 500px;
+    overflow:hidden;
+}
+div.three-image-content-container div.top-images-container div.col-xs-4 div.adaptable-image {
+    height: 425px;
+    overflow:hidden;
+}
+div.three-image-content-container div.bottom-content-container {
+    height: 375px;
+    overflow:hidden;
+    width: 100%;
+}
+div.three-image-content-container div.bottom-content-container div.col-xs-8 {
+    margin-right: 0;
+    padding-right: 0;
+}
+div.three-image-content-container div.bottom-content-container div.col-xs-4 {
+    margin-left: 0;
+    padding-left: 0;
+}
+div.three-image-content-container div.bottom-content-container div.col-xs-8 div {
+    height: 375px;
+    padding-right: 50px;
+    vertical-align: middle;
+    display: table-cell;
+}
+div.three-image-content-container div.bottom-content-container div.col-xs-4 div.adaptable-image {
+    height: 375px;
+    overflow:hidden;
+}
+@media screen and (max-width: 768px) {
+    div.xs-img-container div.adaptable-image {
+        max-height: 500px;
+        min-height: 200px;
+        overflow: hidden;
+    }
+    div.xs-img-container > div {
+        padding-top: 35px;
+        padding-bottom: 35px;
+    }
+    div.xs-img-container > div p {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+/**/
+/*xs-three-img-container*/
+
+div.related-posts {
+    background-color: #00c4c4;
+}
+div.related-posts > div > a {
+    display: block;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #FFF;
+}
+div.related-posts > div > a:hover {
+    text-decoration: none;
+}
+div.related-posts > div > a img {
+    width: 50px;
+}
+div.related-posts > div > a h3 {
+    padding-top: 35px;
+    padding-bottom: 50px;
+}
+
+/*
+div.gallery div.gallery-images {
+    display: table;
+}
+div.gallery div.gallery-images div {
+    overflow: hidden;
+    display: table-cell;
+    width: 200px;
+}
+div.gallery div.gallery-img-row-1 div:nth-child(1) {
+    text-align: right;
+}
+div.gallery div.gallery-images div img {
+    max-width: 200px;
+    height: 200px;
+}
+div.gallery div.gallery-img-row-1 div:nth-child(1) img {
+    max-width: 400px;
+    padding-right: 5px;
+    padding-bottom: 10px;
+}
+div.gallery div.gallery-img-row-1 div:nth-child(2) img {
+    padding-left: 5px;
+    padding-bottom: 10px;
+}
+div.gallery div.gallery-img-row-2 div img {
+    padding-left: 10px;
+}*/

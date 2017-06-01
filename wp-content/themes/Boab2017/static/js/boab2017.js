@@ -4,25 +4,7 @@ $( document ).ready(function() {
     //.form-expand
     $('form.search-form').on('mouseover', function() {
        $(this).find('input').focus();
-/*
-        background-color: #fff;
-        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-        border-radius: 5px;
-        border: 1px solid #ccc;*/
-/*
-        $(this).find('input')
-        .animate({
-            borderTopLeftRadius: 5,
-            borderTopRightRadius: 5,
-            borderBottomLeftRadius: 5,
-            borderBottomRightRadius: 5,
-            WebkitBorderTopLeftRadius: 5,
-            WebkitBorderTopRightRadius: 5,
-            WebkitBorderBottomLeftRadius: 5,
-            WebkitBorderBottomRightRadius: 5,
-            MozBorderRadius: 5,
-            backgroundColor: '#99FFFF !important'
-        }, 900);*/
+
     });
     $('form.search-form').on('click', function() {
         if($(this).find('input').val() != '') {
@@ -68,7 +50,7 @@ $( document ).ready(function() {
 
         if((bottomPixel - bottomOfSocialMediaToVPBottom) >= footerTopPx) {
             if($('ul.socialMedia').css('top') != (footerTopPx - 200)) {
-                $('ul.socialMedia').css('position', 'absolute').css('top', (footerTopPx - 200));
+                $('ul.socialMedia').css('position', 'absolute').css('top', (footerTopPx - 230));
             }
         } else {
             if($('ul.socialMedia').css('position') != 'fixed') {
@@ -229,4 +211,68 @@ $( document ).ready(function() {
     }
 
     resetTyper();
+/*
+    // This is a hack that forces a background color of the site to fit any place where it's required! Stupid pretty design!!!! :)
+    function addFullBackgroundColor($elem) {
+        // What color do we need to paint the background?
+        var colorCode = $elem.data('color');
+
+        // Now find where on the site we'll need this background-color
+        var offset = $elem.offset();
+
+        // Let's get the hight of the element and then we have what we need to know in order to paint the background
+        var height = $elem.height();
+
+        /*
+        $('body').css({
+            background: "-webkit-gradient(linear, left top, right top, from(#"+colorCode+"), to(#"+colorCode+"))"}).css({
+            background: "-moz-linear-gradient(left, #"+colorCode+" 0%, #"+colorCode+" 100%)"});
+
+        $('body')
+            .css('background', 'linear-gradient(to right, #'+colorCode+', #'+colorCode+'')
+            .css('background-position', '0px '+(offset.top)+'px')
+            .css('background-size', '100% '+height+'px')
+            .css('background-repeat', 'no-repeat');
+    }
+
+    $('.full-color').each(function() {
+        addFullBackgroundColor($(this));
+    });
+
+    $(window).resize(function(){
+        $('.full-color').each(function() {
+            addFullBackgroundColor($(this));
+        });
+    });*/
+
+    function achieveFullBackgroundColor($elem) {
+        var documentWidth   = $(document).width() + Math.ceil(getScrollBarWidth()),
+            containerWidth  = $elem.width(),
+            sideMargin      = (Math.ceil((documentWidth - containerWidth) / 2) + 15);
+
+        $elem.css('margin-left', '-'+sideMargin+'px').css('margin-right', '-'+sideMargin+'px').css('padding-right', sideMargin+'px').css('padding-left', sideMargin+'px');
+    }
+
+    $('.full-color').each(function() {
+        achieveFullBackgroundColor($(this));
+    });
+
+    $(window).resize(function(){
+        $('.full-color').each(function() {
+            achieveFullBackgroundColor($(this));
+        });
+    });
+    function getScrollBarWidth(){
+        if($(document).height() > $(window).height()){
+            $('body').append('<div id="fakescrollbar" style="width:50px;height:50px;overflow:hidden;position:absolute;top:-200px;left:-200px;"></div>');
+            fakeScrollBar = $('#fakescrollbar');
+            fakeScrollBar.append('<div style="height:100px;">&nbsp;</div>');
+            var w1 = fakeScrollBar.find('div').innerWidth();
+            fakeScrollBar.css('overflow-y', 'scroll');
+            var w2 = $('#fakescrollbar').find('div').html('html is required to init new width.').innerWidth();
+            fakeScrollBar.remove();
+            return (w1-w2);
+        }
+        return 0;
+    }
 });

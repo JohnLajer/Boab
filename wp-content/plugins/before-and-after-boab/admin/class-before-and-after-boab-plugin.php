@@ -109,7 +109,7 @@ class Before_And_After_Boab_Plugin {
      */
     public function add_meta_box() {
 
-        $screens = array( 'boab-project' );
+        $screens = array( 'boab_project' );
 
         foreach ( $screens as $screen ) {
 
